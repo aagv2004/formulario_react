@@ -1,30 +1,51 @@
 
+import { actualizarContacto, obtenerContacto } from '@/Firebase/Promesas';
 import { InitialStateContacto } from '@/Initial States/initialStates';
 import { Contacto } from '@/Interfaces/interfaces';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 
 export const editarContacto = () => {
-
     const router = useRouter();
-    const volverAdmin = () => {
-        router.push('/paginaAdmin');
-    }
-
     const [contacto, setContacto] = useState<Contacto>(InitialStateContacto);
+    
+    useEffect(() => {
+        const key = router.query.key;
+        if (typeof key === 'string') {
+            obtenerContacto(key).then((c) => {
+                if (c != undefined) {
+                    setContacto(c);
+                } else {
+                    alert("No se encontró el contacto");
+                }
+            });
+        }
+    }, [router.query.key]);
+
+    
     const validarLargoMinimo = (nombre:string, value:string) => {
-        setContacto({...contacto, [nombre]:value})
+        if (nombre.startsWith('redesSociales')) {
+            const redesSociales = {...contacto.redesSociales, [nombre.split('.')[1]]: value};
+            setContacto({...contacto, redesSociales});
+        } else {
+            setContacto({...contacto, [nombre]: value});
+        }
     }
 
 
     const Actualizar = () => {
-        actualizarContacto(contacto).then(() => {
-            alert('Registrado con éxito');
-        }).catch((e) => {
-            alert('Error al registrar: ' + e);
-        });
+        actualizarContacto(contacto).then(()=>{
+            alert('Contacto actualizado')
+            volverTabla()
+        }).catch((e)=>{
+            alert('Error al actualizar: ' + e)
+        })
     };
+
+    const volverTabla = () => {
+        router.push('/mostrarContactos')
+    }
 
 
 
@@ -34,7 +55,7 @@ export const editarContacto = () => {
             <main>
                 <div className='titulos'>
                     <h1> Ingrese información de contacto </h1>
-                    <Button type='button' variant='danger' className='btnVolver' onClick={volverAdmin}>Volver</Button>
+                    <Button type='button' variant='danger' className='btnVolver' onClick={volverTabla}>Volver</Button>
                 </div>
                 <div className='cajaBase'>
                     <Form>
@@ -139,7 +160,7 @@ export const editarContacto = () => {
                             />
                         </Form.Group>
                     </Form>
-                    <Button type='submit' variant='success' className='btnRegistroContacto' onClick={Actualizar}>Registrar Contacto</Button>
+                    <Button type='submit' variant='success' className='btnRegistroContacto' onClick={Actualizar}>Actualizar Contacto</Button>
                 </div>
             </main>
         </>

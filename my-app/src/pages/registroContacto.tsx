@@ -13,9 +13,13 @@ const RegistroContacto = () => {
 
     const [contacto, setContacto] = useState<Contacto>(InitialStateContacto);
     const validarLargoMinimo = (nombre:string, value:string) => {
-        setContacto({...contacto, [nombre]:value})
+        if (nombre.startsWith('redesSociales')) {
+            const redesSociales = {...contacto.redesSociales, [nombre.split('.')[1]]: value};
+            setContacto({...contacto, redesSociales});
+        } else {
+            setContacto({...contacto, [nombre]: value});
+        }
     }
-
 
     const registrar = () => {
         registrarContacto(contacto).then(() => {

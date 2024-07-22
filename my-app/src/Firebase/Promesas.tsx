@@ -10,7 +10,7 @@ export const registrarUsuario = async(usuario:Usuario) => {
     const docRef = await addDoc(collection(db, 'usuarios'), usuario)
 }
 
-export const obtenerContacto = async()=> {
+export const obtenerContactos = async()=> {
     const colRef = collection(db, "contactos");
     const querySnapshot = await getDocs(colRef);
     let contactos:Contacto[] = []
@@ -29,7 +29,38 @@ export const obtenerContacto = async()=> {
     return contactos
 }
 
-export const actualizarContacto = async(contacto:Contacto) => {
-    const docRef = doc(db, 'contactos', contacto.key)
-    await updateDoc(docRef, contacto)
+export const obtenerContacto = async(key:string) => {
+    const docRef = doc(db, "contactos", key);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        let contacto:Contacto = {
+            nombre: docSnap.data().nombre,
+            apellido: docSnap.data().apellido,
+            telefono: docSnap.data().telefono,
+            nivelImportancia: docSnap.data().nivelImportancia,
+            redesSociales: docSnap.data().redesSociales,
+            asunto: docSnap.data().asunto,
+            key:docSnap.id
+        }
+        return contacto
+    } else {
+        return undefined
+    }
+
+}
+
+export const actualizarContacto = async(c:Contacto)=>{
+    const ref = doc(db, "contactos", c.key!);
+    // Para guardar sin key
+    await updateDoc(ref, {
+        nombre: c.nombre,
+        apellido: c.apellido,
+        telefono: c.telefono,
+        nivelImportancia: c.nivelImportancia,
+        redesSociales: c.redesSociales,
+        asunto: c.asunto
+    })
+    // Para guardar con Key, es decir, todo.
+     // await updateDoc(ref, {...p})
 }

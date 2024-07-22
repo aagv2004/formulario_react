@@ -1,15 +1,20 @@
 import React, { use, useEffect, useState } from 'react'
 import { Contacto } from '../Interfaces/interfaces'
 import { InitialStateContacto } from '@/Initial States/initialStates'
-import { obtenerContacto } from '@/Firebase/Promesas'
+import { obtenerContacto, obtenerContactos } from '@/Firebase/Promesas'
 import { Button, Table } from 'react-bootstrap'
 import path from 'path'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const mostrarContactos = () => {
+    const router = useRouter()
+    const volverAdmin = () => {
+        router.push('/paginaAdmin')
+    }
     const [contactos, setContactos] = useState<Contacto[]>([])
     const mostrar = () => {
-        obtenerContacto().then((contactos) => {
+        obtenerContactos().then((contactos) => {
             console.log(contactos)
             setContactos(contactos)
     })
@@ -21,6 +26,10 @@ const mostrarContactos = () => {
   return (
     <>
         <main>
+            <div className='titulos'>
+                <h1> Contactos </h1>
+                <Button type='button' variant='primary' className='btnVolver' onClick={volverAdmin}>Volver</Button>
+            </div>
             <div className='cajaBase'>
                 <Table striped bordered hover>
                     <thead>
