@@ -30,6 +30,17 @@ export default function Home() {
       setMensaje('Usuario o contraseña incorrecta')
     }
   }
+
+  const validarLargo = (valor:string) => {
+    if(valor.length > 4){
+      setMensaje('');
+    } else {
+      setMensaje('Debes ingresar al menos 4 caracteres')
+    }
+    setUsuario(valor);
+  }
+
+
   return (
     <>
       <main>
@@ -43,7 +54,7 @@ export default function Home() {
                 type="text"
                 placeholder="Ingrese nombre usuario"
                 value={usuario}
-                onChange={(e) => setUsuario(e.target.value)}
+                onChange={(e) => {validarLargo(e.currentTarget.value)}}
                 required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">

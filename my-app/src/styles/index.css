@@ -18,37 +18,234 @@
 }
 
 .btnLogin {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-    display: block;
-    width: 100%;
-    margin-top: 20px;
-    text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  text-decoration: none;
 }
 
-.tituloAdmin {
-    font-size: 36px;
-    margin-bottom: 20px;
-    text-align: center;
-    background-color: #e7e7e7;
-    border-radius: 10px;
-    width: 35%;
-    position: relative;
-    left: 30%;
-    padding: 10px;
+
+.titulos {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #90afdf;
+  border-radius: 10px;
+  width: 40%;
+  position: relative;
+  left: 30%;
+  top: 17px;
+  padding: 10px;
 }
 
-.cajaAdmin {
+.cajaBase {
   background-color: #f5f5f5;
   border-radius: 10px;
   padding: 20px;
-  width: 90%;
-  height: 800px;
+  width: 80%;
+  height: 900px;
   margin: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: absolute;
-  left: 75px;
+  left: 150px;
+}
+
+.cajaBotones {
+  background-color: #90afdf;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 100px;
+}
+
+.primerosBotones {
+  /* background-color: #a7eb80; */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  /* border: 1px solid black; */
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: 675px;
+  margin-top: 20px;
+  text-decoration: none;
+  position: relative;
+  left: 10px;
+}
+
+.btnUsuario {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+  /* display: block; */
+  width: 45%;
+  margin-top: 60px;
+  text-decoration: none;
+  border: none;
+}
+
+.btnMostrar {
+  background-color: rgba(0, 255, 255, 0.486);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+  /* display: block; */
+  width: 75%;
+  /* margin-top: 20px; */
+  text-decoration: none;
+  border: none;
+}
+
+.btnSalir {
+  color: white;
+  background-color: red;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+  /* display: block; */
+  width: 45%;
+  /* margin-top: 20px; */
+  text-decoration: none;
+  border: none;
+}
+
+.imagenAdmin {
+  width: 40%;
+  border: 1px solid white;
+}
+
+Form {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.redesSociales {
+  position: relative;
+  left: 650px;
+  top: 0px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 10px;
+}
+
+.grupoRadio {
+  position: relative;
+  left: 300px;
+  top: -50px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  /* margin: 20px; */
+  padding: 10px;
+}
+
+.asunto {
+  width: 101.5%;
+  height: 100%;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  top: 0px;
+  right: 10px;
+}
+
+.areatexto {
+  text-align: justify;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 10px;
+  resize: none;
+}
+
+.btnRegistroContacto {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+  width: 75%;
+  margin-top: 20px;
+  text-decoration: none;
+  position: relative;
+  top: 0px;
+  left: 150px;
+}
+
+.campos {
+  display: block;
+  width: 1000px;
+}
+
+.btnVolver {
+  /* background-color: #007bff; */
+  color: white;
+  /* padding: 10px 20px; */
+  border-radius: 5px;
+  text-align: center;
+  /* display: block; */
+  width: 40%;
+  /* margin-top: 20px; */
+  text-decoration: none;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.registroUsuarios {
+  font-family: Arial, sans-serif;
+  /* text-align: center; */
+  position:relative;
+  top: 0%;
+}
+
+.btnRegistroUsuario {
+  /* background-color: #007bff; */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  /* display: block; */
+  width: 100%;
+  margin-top: 30px;
+  text-decoration: none;
+  position: relative;
+  top: -15px;
+}
+.btnVolverUsuario {
+  /* background-color: #007bff; */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  /* display: block; */
+  width: 100%;
+  /* margin-top: 20px; */
+  text-decoration: none;
+  position: relative;
+  top:0px;
 }
