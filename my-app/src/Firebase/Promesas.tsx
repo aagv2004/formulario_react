@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "./Firebase";
 import { Contacto, Usuario } from "@/Interfaces/interfaces";
 
@@ -63,4 +63,9 @@ export const actualizarContacto = async(c:Contacto)=>{
     })
     // Para guardar con Key, es decir, todo.
      // await updateDoc(ref, {...p})
+}
+
+export const eliminarContacto = async(key:string) => {
+    const docRef = doc(db, "contactos", key);
+    await deleteDoc(docRef)
 }
